@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':fallocalc2'
 rootProject.name='FalloCalc'
