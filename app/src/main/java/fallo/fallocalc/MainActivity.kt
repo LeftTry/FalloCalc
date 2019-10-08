@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
     private var multipleClicked  = false
     private var divideClicked    = false
     private var isFirstComponent = true
-    private var firstComponent   = 0
-    private var secondComponent  = 0
-    private var answer           = 0
+    private var firstComponent   = 0f
+    private var secondComponent  = 0f
+    private var answer           = 0f
     private var nowAnswer        = "0"
     private var nowSecondAnswer  = "0"
     private var someClicked      = false
@@ -61,8 +61,8 @@ class MainActivity : AppCompatActivity() {
         inputView.text = text
     }
     fun onEqualsClick(view: View) {
-        firstComponent = nowAnswer.toInt()
-        secondComponent = nowSecondAnswer.toInt()
+        firstComponent = nowAnswer.toFloat()
+        secondComponent = nowSecondAnswer.toFloat()
         deleteButton.visibility = View.INVISIBLE
         allDeleteButton.visibility = View.VISIBLE
         if (plusClicked){
@@ -81,9 +81,14 @@ class MainActivity : AppCompatActivity() {
             answer = firstComponent / secondComponent
             divideClicked = false
         }
+        /*
+        if(answer.toString().drop(answer.toString().length - 2) == ".0"){
+            answer = answer.toInt().toFloat()
+        }
+         */
         inputView.text = answer.toString()
         someClicked = false
-        secondComponent = 0
+        secondComponent = 0f
         nowAnswer = answer.toString()
         nowSecondAnswer = "0"
         isFirstComponent = true
