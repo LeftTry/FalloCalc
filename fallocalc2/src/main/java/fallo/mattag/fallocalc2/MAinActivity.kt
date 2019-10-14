@@ -1,29 +1,36 @@
-package fallo.mattag.fallocalc2
+package fallo.fallocalc
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import fallo.mattag.fallocalc2.R
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Double
+import java.lang.Integer
 
 
-@SuppressLint("Registered")
 @Suppress("UNUSED_CHANGED_VALUE", "DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
-    private val TAG              = "FalloCalc"
-    private var plusClicked      = false
-    private var minusClicked     = false
-    private var multipleClicked  = false
-    private var divideClicked    = false
-    private var isFirstComponent = true
-    private var firstComponent   = 0f
-    private var secondComponent  = 0f
-    private var answer           = 0f
-    private var nowAnswer        = "0"
-    private var nowSecondAnswer  = "0"
-    private var someClicked      = false
+
+    private val TAG                         = "FalloCalc"
+    private var plusClicked                 = false
+    private var minusClicked                = false
+    private var multipleClicked             = false
+    private var divideClicked               = false
+    private var isFirstComponent            = true
+    private var firstComponentDouble        = 0.0
+    private var secondComponentDouble       = 0.0
+    private var answer                      = 0.0
+    private var nowAnswer                   = "0"
+    private var nowSecondAnswer             = "0"
+    private var someClicked                 = false
+    private var firstPointClicked           = false
+    private var secondPointClicked          = false
+    private var firstComponentInt : Long    = 0
+    private var secondComponentInt : Long   = 0
+    private var answerInt : Long            = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,45 +64,63 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onPointClick(view: View) {
-        var text = inputView.text.toString()
-        text += "."
-        inputView.text = text
+        if (isFirstComponent) {
+            if(nowAnswer != "0" && !someClicked && !firstPointClicked){
+                var text : String  = inputView.text.toString()
+                text               += "."
+                inputView.text     = text
+                firstPointClicked  = true
+                nowAnswer          += "."
+                Log.d(TAG, "fa += .")
+            }
+        }
+        else{
+            if (nowSecondAnswer != "0") {
+                var text : String   = inputView.text.toString()
+                text                += "."
+                inputView.text      = text
+                nowSecondAnswer     += "."
+                secondPointClicked  = true
+                Log.d(TAG, "sa += .")
+            }
+        }
     }
+
     fun onEqualsClick(view: View) {
-        firstComponent = nowAnswer.toFloat()
-        secondComponent = nowSecondAnswer.toFloat()
-        deleteButton.visibility = View.INVISIBLE
-        allDeleteButton.visibility = View.VISIBLE
-        if (plusClicked){
-            answer = firstComponent + secondComponent
-            plusClicked = false
-        }
-        if (minusClicked){
-            answer = firstComponent - secondComponent
-            minusClicked = false
-        }
-        if (multipleClicked){
-            answer = firstComponent * secondComponent
-            multipleClicked = false
-        }
-        if (divideClicked){
-            answer = firstComponent / secondComponent
-            divideClicked = false
-        }
-        /*
-        if(answer.toString().drop(answer.toString().length - 2) == ".0"){
-            answer = answer.toInt().toFloat()
-        }
-         */
-        inputView.text = answer.toString()
-        someClicked = false
-        secondComponent = 0f
-        nowAnswer = answer.toString()
-        nowSecondAnswer = "0"
-        isFirstComponent = true
-        Log.d(TAG, "fc: $firstComponent sc: $secondComponent fa: $nowAnswer sa: $nowSecondAnswer a: $answer")
+        firstComponentDouble        = Double.parseDouble(nowAnswer)
+        secondComponentDouble       = Double.parseDouble(nowSecondAnswer)
+        deleteButton.visibility     = View.INVISIBLE
+        allDeleteButton.visibility  = View.VISIBLE
+
+        if (plusClicked)      answer = firstComponentDouble + secondComponentDouble
+
+        if (minusClicked)     answer = firstComponentDouble - secondComponentDouble
+
+        if (multipleClicked)  answer = firstComponentDouble * secondComponentDouble
+
+        if (divideClicked)    answer = firstComponentDouble / secondComponentDouble
+
+        Log.d(
+            TAG,
+            "fc: $firstComponentDouble sc: $secondComponentDouble fa: $nowAnswer sa: $nowSecondAnswer a: $answer"
+        )
+
+        inputView.text         = answer.toString()
+        divideClicked          = false
+        multipleClicked        = false
+        minusClicked           = false
+        plusClicked            = false
+        someClicked            = false
+        nowAnswer              = answer.toString()
+        nowSecondAnswer        = "0"
+        isFirstComponent       = true
+        secondComponentDouble  = 0.0
+        firstPointClicked      = false
+        secondPointClicked     = false
     }
+
     fun onPlusClick(view: View) {
         var text = inputView.text.toString()
         text += "+"
@@ -104,6 +129,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "plusClicked = true")
         someClicked = true
     }
+
     fun onOneClick(view: View) {
         var text = inputView.text.toString()
         text += "1"
@@ -131,6 +157,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onTwoClick(view: View) {
         var text = inputView.text.toString()
         text += "2"
@@ -158,6 +185,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onThreeClick(view: View) {
         var text = inputView.text.toString()
         text += "3"
@@ -185,6 +213,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onMultipleClick(view: View) {
         var text = inputView.text.toString()
         text += "*"
@@ -192,6 +221,7 @@ class MainActivity : AppCompatActivity() {
         multipleClicked = true
         someClicked = true
     }
+
     fun onFourClick(view: View) {
         var text = inputView.text.toString()
         text += "4"
@@ -218,6 +248,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onFiveClick(view: View) {
         var text = inputView.text.toString()
         text += "5"
@@ -245,6 +276,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onSixClick(view: View) {
         var text = inputView.text.toString()
         text += "6"
@@ -271,6 +303,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onMinusClick(view: View) {
         var text = inputView.text.toString()
         text += "-"
@@ -278,6 +311,7 @@ class MainActivity : AppCompatActivity() {
         minusClicked = true
         someClicked = true
     }
+
     fun onSevenClick(view: View) {
         var text = inputView.text.toString()
         text += "7"
@@ -304,6 +338,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onEightClick(view: View) {
         var text = inputView.text.toString()
         text += "8"
@@ -332,6 +367,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onNineClick(view: View) {
         var text = inputView.text.toString()
         text += "9"
@@ -359,6 +395,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     fun onDivideClick(view: View) {
         var text = inputView.text.toString()
         text += "/"

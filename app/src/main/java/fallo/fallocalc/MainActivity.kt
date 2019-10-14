@@ -13,23 +13,23 @@ import java.lang.Integer
 class MainActivity : AppCompatActivity() {
 
 
-    private val TAG                    = "FalloCalc"
-    private var plusClicked            = false
-    private var minusClicked           = false
-    private var multipleClicked        = false
-    private var divideClicked          = false
-    private var isFirstComponent       = true
-    private var firstComponentDouble   = 0.0
-    private var secondComponentDouble  = 0.0
-    private var answer                 = 0.0
-    private var nowAnswer              = "0"
-    private var nowSecondAnswer        = "0"
-    private var someClicked            = false
-    private var firstPointClicked      = false
-    private var secondPointClicked      = false
-    private var firstComponentInt      = 0
-    private var secondComponentInt     = 0
-    private var answerInt              = 0
+    private val TAG                         = "FalloCalc"
+    private var plusClicked                 = false
+    private var minusClicked                = false
+    private var multipleClicked             = false
+    private var divideClicked               = false
+    private var isFirstComponent            = true
+    private var firstComponentDouble        = 0.0
+    private var secondComponentDouble       = 0.0
+    private var answer                      = 0.0
+    private var nowAnswer                   = "0"
+    private var nowSecondAnswer             = "0"
+    private var someClicked                 = false
+    private var firstPointClicked           = false
+    private var secondPointClicked          = false
+    private var firstComponentInt : Long    = 0
+    private var secondComponentInt : Long   = 0
+    private var answerInt : Long            = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,164 +67,27 @@ class MainActivity : AppCompatActivity() {
     fun onPointClick(view: View) {
         if (isFirstComponent) {
             if(nowAnswer != "0" && !someClicked && !firstPointClicked){
-                var text = inputView.text.toString()
-                text += "."
-                inputView.text = text
-                firstPointClicked = true
-                nowAnswer += "."
+                var text : String  = inputView.text.toString()
+                text               += "."
+                inputView.text     = text
+                firstPointClicked  = true
+                nowAnswer          += "."
                 Log.d(TAG, "fa += .")
             }
         }
         else{
             if (nowSecondAnswer != "0") {
-                var text = inputView.text.toString()
-                text += "."
-                inputView.text = text
-                nowSecondAnswer += "."
-                secondPointClicked = true
+                var text : String   = inputView.text.toString()
+                text                += "."
+                inputView.text      = text
+                nowSecondAnswer     += "."
+                secondPointClicked  = true
                 Log.d(TAG, "sa += .")
-            }
+        }
         }
     }
 
     fun onEqualsClick(view: View) {
-        if (nowAnswer.drop(nowAnswer.length + 2) == ".0" && nowSecondAnswer.drop(nowSecondAnswer.length + 2) == ".0"){
-            nowAnswer                   = nowAnswer.dropLast(2)
-            nowSecondAnswer             = nowSecondAnswer.dropLast(2)
-            firstComponentInt           = nowAnswer.toInt()
-            secondComponentInt          = nowSecondAnswer.toInt()
-            deleteButton.visibility     = View.INVISIBLE
-            allDeleteButton.visibility  = View.VISIBLE
-
-            if (plusClicked)      answerInt = firstComponentInt + secondComponentInt
-
-            if (minusClicked)     answerInt = firstComponentInt - secondComponentInt
-
-            if (multipleClicked)  answerInt = firstComponentInt * secondComponentInt
-
-            if (divideClicked)    answerInt = firstComponentInt / secondComponentInt
-
-            Log.d(
-                TAG,
-                "fc: $firstComponentInt sc: $secondComponentInt fa: $nowAnswer sa: $nowSecondAnswer a: $answerInt"
-            )
-
-            inputView.text      = answerInt.toString()
-            divideClicked       = false
-            multipleClicked     = false
-            minusClicked        = false
-            plusClicked         = false
-            someClicked         = false
-            nowAnswer           = answerInt.toString()
-            nowSecondAnswer     = "0"
-            isFirstComponent    = true
-            secondComponentInt  = 0
-            firstPointClicked   = false
-            secondPointClicked  = false
-        }
-        if (!firstPointClicked && !secondPointClicked){
-
-            firstComponentInt           = nowAnswer.toInt()
-            secondComponentInt          = nowSecondAnswer.toInt()
-            deleteButton.visibility     = View.INVISIBLE
-            allDeleteButton.visibility  = View.VISIBLE
-
-            if (plusClicked)      answerInt = firstComponentInt + secondComponentInt
-
-            if (minusClicked)     answerInt = firstComponentInt - secondComponentInt
-
-            if (multipleClicked)  answerInt = firstComponentInt * secondComponentInt
-
-            if (divideClicked)    answerInt = firstComponentInt / secondComponentInt
-
-            Log.d(
-                TAG,
-                "fc: $firstComponentInt sc: $secondComponentInt fa: $nowAnswer sa: $nowSecondAnswer a: $answerInt"
-            )
-
-            inputView.text      = answerInt.toString()
-            divideClicked       = false
-            multipleClicked     = false
-            minusClicked        = false
-            plusClicked         = false
-            someClicked         = false
-            nowAnswer           = answerInt.toString()
-            nowSecondAnswer     = "0"
-            isFirstComponent    = true
-            secondComponentInt  = 0
-            firstPointClicked   = false
-            secondPointClicked  = false
-        }
-        if (nowAnswer.drop(nowAnswer.length + 2) == ".0" && !secondPointClicked){
-
-            nowAnswer                   = nowAnswer.dropLast(2)
-            firstComponentInt           = nowAnswer.toInt()
-            secondComponentInt          = nowSecondAnswer.toInt()
-            deleteButton.visibility     = View.INVISIBLE
-            allDeleteButton.visibility  = View.VISIBLE
-
-            if (plusClicked)      answerInt = firstComponentInt + secondComponentInt
-
-            if (minusClicked)     answerInt = firstComponentInt - secondComponentInt
-
-            if (multipleClicked)  answerInt = firstComponentInt * secondComponentInt
-
-            if (divideClicked)    answerInt = firstComponentInt / secondComponentInt
-
-            Log.d(
-                TAG,
-                "fc: $firstComponentInt sc: $secondComponentInt fa: $nowAnswer sa: $nowSecondAnswer a: $answerInt"
-            )
-
-            inputView.text      = answerInt.toString()
-            divideClicked       = false
-            multipleClicked     = false
-            minusClicked        = false
-            plusClicked         = false
-            someClicked         = false
-            nowAnswer           = answerInt.toString()
-            nowSecondAnswer     = "0"
-            isFirstComponent    = true
-            secondComponentInt  = 0
-            firstPointClicked   = false
-            secondPointClicked  = false
-        }
-        if (nowSecondAnswer.drop(nowSecondAnswer.length + 2) == ".0" && !firstPointClicked){
-
-            nowSecondAnswer            = nowSecondAnswer.dropLast(2)
-            firstComponentInt          = nowAnswer.toInt()
-            secondComponentInt         = nowSecondAnswer.toInt()
-            deleteButton.visibility    = View.INVISIBLE
-            allDeleteButton.visibility = View.VISIBLE
-
-            if (plusClicked)      answerInt = firstComponentInt + secondComponentInt
-
-            if (minusClicked)     answerInt = firstComponentInt - secondComponentInt
-
-            if (multipleClicked)  answerInt = firstComponentInt * secondComponentInt
-
-            if (divideClicked)    answerInt = firstComponentInt / secondComponentInt
-
-            Log.d(
-                TAG,
-                "fc: $firstComponentInt sc: $secondComponentInt fa: $nowAnswer sa: $nowSecondAnswer a: $answerInt"
-            )
-
-            inputView.text      = answerInt.toString()
-            divideClicked       = false
-            multipleClicked     = false
-            minusClicked        = false
-            plusClicked         = false
-            someClicked         = false
-            nowAnswer           = answerInt.toString()
-            nowSecondAnswer     = "0"
-            isFirstComponent    = true
-            secondComponentInt  = 0
-            firstPointClicked   = false
-            secondPointClicked  = false
-        }
-        else {
-
             firstComponentDouble        = Double.parseDouble(nowAnswer)
             secondComponentDouble       = Double.parseDouble(nowSecondAnswer)
             deleteButton.visibility     = View.INVISIBLE
@@ -255,7 +118,6 @@ class MainActivity : AppCompatActivity() {
             secondComponentDouble  = 0.0
             firstPointClicked      = false
             secondPointClicked     = false
-        }
     }
 
     fun onPlusClick(view: View) {
