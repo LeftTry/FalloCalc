@@ -451,5 +451,3 @@ class MainActivity : AppCompatActivity() {
         secondPointClicked     = false
     }
 }
-
-
