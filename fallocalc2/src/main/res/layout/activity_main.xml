@@ -9,7 +9,6 @@
         android:textSize="70sp"
         android:id="@+id/inputView"
         android:layout_alignParentRight="true"
-        android:text="1111"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="RelativeOverlap"
@@ -21,13 +20,12 @@
         android:id="@+id/answerView"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
-        android:text="111111"
         android:layout_height="wrap_content"
         tools:ignore="RelativeOverlap"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="C"
+        android:text="@string/c"
         android:layout_alignParentRight="true"
         android:layout_marginTop="120dp"
         android:layout_alignParentTop="true"
@@ -47,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:text="delete"
+        android:text="@string/delete"
         android:onClick="onDeleteClick"
         tools:ignore="RtlHardcoded" />
 
@@ -64,27 +62,33 @@
     <Button
         android:onClick="onPointClick"
         android:layout_alignParentBottom="true"
-        android:text="."
+        android:text="@string/point"
         android:layout_width="150dp"
         android:layout_height="170dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="145dp"/>
+        android:layout_marginLeft="145dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="145dp" />
     <Button
         android:onClick="onEqualsClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="290dp"
         android:layout_alignParentBottom="true"
-        android:text="="
+        android:text="@string/equals"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="290dp" />
     <Button
         android:onClick="onPlusClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="435dp"
         android:layout_alignParentBottom="true"
-        android:text="+"
+        android:text="@string/plus"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="435dp" />
 
 
 
@@ -94,36 +98,44 @@
         android:layout_marginLeft="0dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="165dp"
-        android:text="1"
+        android:text="@string/_1"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
     <Button
         android:onClick="onTwoClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="145dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="165dp"
-        android:text="2"
+        android:text="@string/_2"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="145dp" />
     <Button
         android:onClick="onThreeClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="290dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="165dp"
-        android:text="3"
+        android:text="@string/_3"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="290dp" />
     <Button
         android:onClick="onMultipleClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="435dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="165dp"
-        android:text="*"
+        android:text="@string/multiple"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="435dp" />
 
     <Button
         android:onClick="onFourClick"
@@ -131,72 +143,88 @@
         android:layout_marginLeft="0dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="330dp"
-        android:text="4"
+        android:text="@string/_4"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
     <Button
         android:onClick="onFiveClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="145dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="330dp"
-        android:text="5"
+        android:text="@string/_5"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="145dp" />
     <Button
         android:onClick="onSixClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="290dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="330dp"
-        android:text="6"
+        android:text="@string/_6"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="290dp" />
     <Button
         android:onClick="onMinusClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="435dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="330dp"
-        android:text="-"
+        android:text="@string/minus"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="435dp" />
     <Button
         android:onClick="onSevenClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="495dp"
         android:layout_alignParentBottom="true"
-        android:text="7"
+        android:text="@string/_7"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_marginStart="0dp"
+        android:layout_alignParentStart="true" />
     <Button
         android:onClick="onEightClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="145dp"
         android:layout_marginBottom="495dp"
         android:layout_alignParentBottom="true"
-        android:text="8"
+        android:text="@string/_8"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="145dp" />
     <Button
         android:onClick="onNineClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="290dp"
         android:layout_marginBottom="495dp"
         android:layout_alignParentBottom="true"
-        android:text="9"
+        android:text="@string/_9"
         android:layout_width="150dp"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="290dp" />
     <Button
         android:onClick="onDivideClick"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="435dp"
         android:layout_marginBottom="495dp"
         android:layout_alignParentBottom="true"
-        android:text="/"
+        android:text="@string/divide"
         android:layout_width="150dp"
-        android:layout_height="170dp" />
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="435dp" />
 
 
 </RelativeLayout>
