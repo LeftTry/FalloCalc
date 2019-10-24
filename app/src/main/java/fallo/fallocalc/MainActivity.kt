@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Double
 
 
 @Suppress("UNUSED_CHANGED_VALUE", "DEPRECATION")
@@ -34,10 +33,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onZeroClick(view: View) {
-//        onClick function for zero button
         var text = inputView.text.toString()
         text += "0"
-//        inputView - TextView for input expression
         inputView.text = text
         if (isFirstComponent) {
             if (someClicked) {
@@ -414,8 +411,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun sum(){
 //      function for sum of to numbers
-        firstComponentDouble        = Double.parseDouble(nowAnswer)
-        secondComponentDouble       = Double.parseDouble(nowSecondAnswer)
+        firstComponentDouble        = nowAnswer.toDouble()
+        secondComponentDouble       = nowSecondAnswer.toDouble()
 //        set button for deleting all text
         deleteButton.visibility     = View.INVISIBLE
         allDeleteButton.visibility  = View.VISIBLE
